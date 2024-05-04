@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List In React</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // Your ItemList component code will go here
+     const ItemList = (props) =>{
+         return (
+             <>
+             {props.items.length === 0 ? (
+                <>
+                    <h1>No Items in Array</h1>
+                    <p>No Items Found</p>
+                </>
+                ) : (
+                <>
+                    <h1>Items in Array</h1>
+                    <ul>
+                        {props.items.map((e, index)=>{
+                                return <li key={index}>{e}</li>
+                            })}
+                    </ul>
+                </>
+             )}
+            </>
+        )
+     }
+
+      const root = document.getElementById('root');
+      const reactRoot = ReactDOM.createRoot(root);
+      reactRoot.render(<ItemList items={['Apple','Banana','Cherry','Mango']}/>);
+    </script>
+</body>
+</html>
